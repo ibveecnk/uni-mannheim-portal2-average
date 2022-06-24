@@ -1,22 +1,23 @@
-const appendText = (text) => {
+const appendText = (text, ele) => {
   const node = document.createElement("div");
   const textnode = document.createTextNode(text);
 
   node.appendChild(textnode);
   node.style.cssText = "font-weight: bold; margin: 5px;";
-  document.getElementsByTagName("table")[1].appendChild(node);
+  ele.appendChild(node);
 };
 
 const main = () => {
+  let tableEl = document.getElementsByTagName("table");
+  let tableContentEl = document.getElementsByClassName("tabelle1_alignright");
+
   // Exit if the site is malformed (e.g. user session expired)
-  if (document.getElementsByClassName("tabelle1_alignright").length < 1) {
+  if (tableEl.length < 1) {
     return;
   }
 
   let totalWeight = 0;
   let average = 0.0;
-
-  let tableContent = document.getElementsByClassName("tabelle1_alignright");
 
   let i = 0;
   let data = [];
@@ -24,7 +25,7 @@ const main = () => {
 
   console.info("Calculating...");
 
-  for (let part of tableContent) {
+  for (let part of tableContentEl) {
     let content = part.innerHTML;
 
     // Remove unnecessary tags from innerHTML -> only parsable numbers are left
@@ -55,8 +56,10 @@ const main = () => {
   console.info("Total ECTS: " + totalWeight);
   console.info("Average: " + average);
 
-  appendText("Average: " + average.toFixed(2));
-  appendText("Total ECTS: " + totalWeight);
+  let appendTo = tableEl[1];
+
+  appendText("Average: " + average.toFixed(2), appendTo);
+  appendText("Total ECTS: " + totalWeight, appendTo);
 };
 
 main();
