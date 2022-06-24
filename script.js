@@ -8,18 +8,26 @@ const appendText = (text) => {
 };
 
 const main = () => {
+  // Exit if the site is malformed (e.g. user session expired)
+  if (document.getElementsByClassName("tabelle1_alignright").length < 1) {
+    return;
+  }
+
   let totalWeight = 0;
   let average = 0.0;
 
-  let tablePart = document.getElementsByClassName("tabelle1_alignright");
+  let tableContent = document.getElementsByClassName("tabelle1_alignright");
+
   let i = 0;
   let data = [];
   let tmp = {};
 
-  console.log("Calculating the average Grade:");
+  console.info("Calculating...");
 
-  for (let part of tablePart) {
+  for (let part of tableContent) {
     let content = part.innerHTML;
+
+    // Remove unnecessary tags from innerHTML -> only parsable numbers are left
     content = content.replace(/(<([^>]+)>)/gi, "").trim();
 
     if (i == 0) {
@@ -36,15 +44,16 @@ const main = () => {
     }
   }
 
-  // Console Prints
-  console.table(data);
-  console.log("Total ECTS: " + totalWeight);
-
   data.forEach((ele) => {
     average += (ele.weight / totalWeight) * ele.mark;
   });
 
-  console.log("Average: " + average);
+  console.info("Data:");
+  console.table(data);
+
+  console.info("Results:");
+  console.info("Total ECTS: " + totalWeight);
+  console.info("Average: " + average);
 
   appendText("Average: " + average.toFixed(2));
   appendText("Total ECTS: " + totalWeight);
