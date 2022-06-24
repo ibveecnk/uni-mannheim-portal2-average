@@ -3,7 +3,8 @@ const appendText = (text, ele) => {
   const textnode = document.createTextNode(text);
 
   node.appendChild(textnode);
-  node.style.cssText = "font-weight: bold; margin: 5px;";
+  node.className = "info";
+  //node.style.cssText = "font-weight: bold; margin: 5px;";
   ele.appendChild(node);
 };
 
@@ -56,10 +57,16 @@ const main = () => {
   console.info("Total ECTS: " + totalWeight);
   console.info("Average: " + average);
 
-  let appendTo = tableEl[1];
+  let tableElement = tableEl[1];
+  let infoDiv = document.createElement("div");
 
-  appendText("Average: " + average.toFixed(2), appendTo);
-  appendText("Total ECTS: " + totalWeight, appendTo);
+  // Workaround to not inherit table formatting
+  tableElement.parentNode.insertBefore(infoDiv, tableElement.nextSibling);
+
+  infoDiv.className = "infoWrapper";
+
+  appendText("Average: " + average.toFixed(2), infoDiv);
+  appendText("Total ECTS: " + totalWeight, infoDiv);
 };
 
 main();

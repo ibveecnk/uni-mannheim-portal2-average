@@ -9,7 +9,8 @@
       "matches": [
         "https://portal2.uni-mannheim.de/portal2/rds?state=notenspiegelStudent&next=*"
       ],
-      "js": ["script.js"]
+      "js": ["script.js"],
+      "css": ["style.css"]
     }
   ]
 }
