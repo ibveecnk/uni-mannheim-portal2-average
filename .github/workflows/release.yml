@@ -11,7 +11,7 @@ jobs:
           type: "zip"
           filename: "release.zip"
           exclusions: "*.git* /*node_modules/* .editorconfig *.md"
-      -name: Upload Release
+      - name: Upload Release
         uses: ncipollo/release-action@v1
         with:
           artifacts: "release.zip"
