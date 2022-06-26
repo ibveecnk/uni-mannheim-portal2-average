@@ -65,7 +65,7 @@ const main = () => {
 
   infoDiv.className = "infoWrapper";
 
-  appendText("Average: " + average.toFixed(2), infoDiv);
+  appendText("Average Grade: " + average.toFixed(2), infoDiv);
   appendText("Total ECTS: " + totalWeight, infoDiv);
 };
 
