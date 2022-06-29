@@ -40,7 +40,9 @@ const main = () => {
       tmp.mark = parseFloat(content.replace(",", "."));
       i++;
     } else {
-      data.push(tmp);
+      if(tmp.mark != 5.0) {
+        data.push(tmp);
+      }
       i = 0;
       tmp = {};
     }
