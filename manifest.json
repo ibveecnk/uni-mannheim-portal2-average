@@ -1,16 +1,16 @@
 {
-  "name": "Uni Mannheim Portal2 Average",
-  "description": "Calculate the average grade in Portal2",
-  "version": "1.0",
-  "manifest_version": 3,
-  "content_scripts": [
-    {
-      "run_at": "document_end",
-      "matches": [
-        "https://portal2.uni-mannheim.de/portal2/rds?state=notenspiegelStudent&next=*"
-      ],
-      "js": ["script.js"],
-      "css": ["style.css"]
-    }
-  ]
+    "name": "Uni Mannheim Portal2 Average",
+    "description": "Calculate the average grade in Portal2",
+    "version": "1.7",
+    "manifest_version": 3,
+    "content_scripts": [
+        {
+            "run_at": "document_end",
+            "matches": [
+                "https://portal2.uni-mannheim.de/portal2/rds?state=notenspiegelStudent&next=*"
+            ],
+            "js": ["script.js"],
+            "css": ["style.css"]
+        }
+    ]
 }
